@@ -1,3 +1,9 @@
+//Catalina Victoria Morel
+//TP3 - Comisión 2 - Profesor Matias Jauregui Lorda
+//Tecno1 - Diseño Multimedial 2021 - UNLP
+
+//https://youtu.be/cmrm61C-FFE
+
 float m;
 int x,y;
 
@@ -17,7 +23,7 @@ void draw(){
   
   translate(width/-190, height/-100);
     rotate(map(mouseX,0,width,0,PI/25));
-println( frameCount);
+
   background(100);
 
 for(int x = 4; x < 500; x+=8){
