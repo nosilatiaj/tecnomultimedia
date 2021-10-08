@@ -1,10 +1,13 @@
+//TP en construcción debido a que curso 5 materias y no he podido organizarme bien en la realización de tps(toy hasta el cuello con todos).
+//Antes del martes 12 estará listo
 
-PImage [] Fondo = new PImage [5];
-PImage [] Perso = new PImage [3];
+
+PImage [] Fondo = new PImage [7];
+PImage [] Perso = new PImage [4];
 
 PFont LetraPapiro, LetraSans;
 int pantalla; 
-boolean opcion;
+boolean opcion1, opcion2;
 
 void setup() {
   size( 700, 400 );
@@ -19,7 +22,7 @@ void setup() {
   }
 
 
-  LetraPapiro = createFont("PAPYRUS.TTF", 1);
+  LetraPapiro = createFont("papyrus-let-bold.ttf", 1);
   LetraSans = createFont("comic-sans-ms_[allfont.es].ttf", 1);
   noStroke();
 }
@@ -66,36 +69,72 @@ void draw() {
     Texto(LetraSans, 15, color(255));
 
     text("¿Aceptas?", width-400, height/3);
-    opcion = boton(width-600, height/3, "SI", color(0));
 
-    opcion =  boton(width-150, height/3, "NO", color(0));
+    opcion1 = boton(width-600, height/3, "SI", color(0));
+    opcion2 =  boton(width-150, height/3, "NO", color(0));
   }
   if (pantalla == 4) {
-    background( Fondo[3]);
-    
-    Cuadro(color(0,150), 10, 10, 680, 150);
-    Texto(LetraSans, 20, color(255));
-    text("Te das cuenta que no estás para divertirte y te vas por donde viniste.", 30, 50, color(255));
-    text("Presiona D para volver a empezar.", width-400, height/3);
-
-  }
-   if (pantalla == 5) {
     background( Fondo[4]);
     image(Perso[2], 0, 0);
     Cuadro(color(0), 10, 10, 680, 150);
-    Texto(LetraPapiro, 20, color(255));
-    text("A VER, A VER, A VER QUE TENEMOS POR ACÁ", 30, 50, color(255));
+    Texto(LetraPapiro, 15, color(255));
+    text("A VER, A VER, A VER QUE TENEMOS POR ACÁ.   UN HUMANO!!", 25, 50, color(255));
+    text("YO NO PUEDO CREER LO QUE VEO.   ¿TE DAS CUENTA QUE ", 25, 80, color(255));
+    text("NO PUEDO DEJARTE PASAR ASI COMO ASI?", 25, 110, color(255));
+    text("Presiona E para seguir hablando con Sans y Papyrus", width-400, height-250);
+  }//te volves x la puerta
+  if (pantalla == 5) {
+    background( Fondo[3]);    
+    Cuadro(color(0, 150), 10, 10, 680, 150);
+    Texto(LetraSans, 20, color(255));
+    text("Te das cuenta que no estás para divertirte y te vas por donde viniste.", 30, 50, color(255));
+    text("Presiona D para volver a empezar.", width-400, height/3);
+  } //continuacion y decision papyrus y sans
+  if (pantalla == 6) {
+    background( Fondo [4]);
+    image(Perso[2], 0, 0);
+    Cuadro(color(0), 10, 10, 680, 150);
+    Texto(LetraPapiro, 15, color(255));
+    text("HUMANO!! NO PASARAS DE ESTA AREA!! YO, EL GRAN PAPYRUS", 25, 50, color(255));
+    text("TE DETENDRÉ Y ENTONCES TE CAPTURARE", 25, 80, color(255));
+    text("¡¡CONTINUA SOLO SI TE ATREVES!!", 25, 110, color(255));
 
+    text("¿DESEAS CONTINUAR?", width-400, height/3);
+
+    opcion1 = boton(width-600, height/3, "SI", color(0));
+    opcion2 =  boton(width-150, height/3, "NO", color(0));
+  }
+  //decidis ir por helado
+  if (pantalla == 7) {
+    background(Fondo[5]);
+    Cuadro(color(0, 150), 10, 10, 680, 150);
+    Texto(LetraPapiro, 20, color(255));
+    text("Ya te estaba estresando tanta cháchara, decidiste ir por helado.", 30, 50, color(255));
+    text("Presiona D para volver a empezar.", width-400, height/3);
+  }
+  //continuas y te atreves omg
+  if (pantalla == 8) {
+    background(Fondo[6]);
+    image(Perso[3], 0, 0);
   }
 }
 
-void mouseClicked(){
-if (pantalla == 3 && opcion){
-  pantalla = 4;
-}
-else if (pantalla==3 && !opcion){
-pantalla = 5;
-}
+void mouseClicked() {
+  if (pantalla == 3 && opcion1) {
+    pantalla = 4;
+    opcion1 = false;
+  } else if (pantalla==3 && opcion2) {
+    pantalla = 5;
+    opcion2 = false;
+  }
+
+  if (pantalla == 6 && opcion1) {
+    pantalla = 8;
+    opcion1 = false;
+  } else if (pantalla== 6 && opcion2) {
+    pantalla = 7;
+    opcion2 = false;
+  }
 }
 
 void keyPressed() {
@@ -108,7 +147,10 @@ void keyPressed() {
   if (key == 'c' && pantalla == 2) {
     pantalla = 3;
   }
-  if (key == 'd' && pantalla == 4){
+  if (key == 'd' && pantalla == 5 || pantalla == 7) {
     pantalla = 0;
+  }
+  if (key == 'e' && pantalla == 4) {
+    pantalla = 6;
   }
 }
