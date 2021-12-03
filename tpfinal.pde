@@ -1,3 +1,11 @@
+//TP FINAL
+//Catalina Victoria Morel y Eliana Iguain
+//TECNO 1
+//Docente: Jauregui 
+//VIDEO YOUTUBE: https://youtu.be/KbOwAWi0U4c
+//DICIEMBRE 2021
+
+
 Aventura aventura;
 void setup() {
   size(700, 600);
